@@ -1,0 +1,35 @@
+{
+    "CHNS": {
+      "type": "Chainsaw",
+      "brand": "Stihl",
+      "dailyRentalCharge": 1.49,
+      "weekdayCharge": true,
+      "weekendCharge": false,
+      "holidayCharge": false
+    },
+    "LADW": {
+      "type": "Ladder",
+      "brand": "Werner",
+      "dailyRentalCharge": 1.99,
+      "weekdayCharge": true,
+      "weekendCharge": true,
+      "holidayCharge": true
+    },
+    "JAKD": {
+      "type": "Jackhammer",
+      "brand": "DeWalt",
+      "dailyRentalCharge": 2.99,
+      "weekdayCharge": true,
+      "weekendCharge": true,
+      "holidayCharge": false
+    },
+    "JAKR": {
+      "type": "Jackhammer",
+      "brand": "Ridgid",
+      "dailyRentalCharge": 2.99,
+      "weekdayCharge": true,
+      "weekendCharge": true,
+      "holidayCharge": false
+    }
+  }
+  
