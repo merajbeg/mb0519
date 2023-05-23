@@ -11,7 +11,7 @@ import com.cf.tool_renter.service.ToolRentalService;
 import com.cf.tool_renter.value_object.RentalRequest;
 
 @RestController
-@RequestMapping("/api/tools")
+@RequestMapping("v1/api/tools")
 public class ToolRentalController {
 
     private final ToolRentalService toolRentalService;

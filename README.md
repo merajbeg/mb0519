@@ -3,10 +3,12 @@ Tool Renting Application
 ------------------------
 
 Application Usage: It is given that the tool rental application will be used by customers to rent tools from a store. The customers will interact with the application to check tool availability, make rental requests, and receive rental agreements.
-The current implementation is a working code that can be tested and deployed preferrably as a docker container over kubernetes. Dockerfile is included. All 6 test cases can be run at the start of the application by uncommenting the line, //application.run();, in the ToolRentalApplication.fetchToolRecrods() method or by making a API call to runTest endpoint as follows and the results are displayed on the console itself. I have also implemented a separate JUnit test classe that can be called and run from outside. I used Maven to manage dependencies and widely used SpringBoot framework for my development.
+
+The current implementation is a working code that can be tested and deployed preferrably as a docker container over kubernetes. Dockerfile is included. All 6 test cases can be run at the start of the application by uncommenting the line, //application.run();, in the ToolRentalApplication.fetchToolRecrods() method or by making a API call to runTest endpoint as follows and the results are displayed on the console itself. I have also implemented a separate JUnit test classe that can be called and run from outside. I used Maven to manage dependencies and widely used SpringBoot  framework for my development.
 
 
-curl --location 'http://localhost:8080/api/tools/runTest' \
+In order to run required test, plese 
+curl --location 'http://localhost:8080/v1/api/tools/runTest' \
 --header 'Content-Type: application/json' \
 --data '{
   "toolCode": "CHNS",
@@ -15,8 +17,8 @@ curl --location 'http://localhost:8080/api/tools/runTest' \
   "discount": 10
 }'
 
-In order to run tool rental api, please follow this command.
-curl --location 'http://localhost:8080/api/tools/rent' \
+In order to rent a tool, please run this command that wil make an api call to the application and return the final charge.
+curl --location 'http://localhost:8080/v1/api/tools/rent' \
 --header 'Content-Type: application/json' \
 --data '{
   "toolCode": "JAKR",
@@ -30,7 +32,7 @@ Note: Since authentication (AuthN) and authorization (AuthZ) was not explictly c
 
 
 ---------------------------------------------------------------------------------
-With that saif, here are some guiding principals to consider before building the tool rental application. Later, I have also included specific assumptions that I made in building the tool renting application.
+With that said, here are some guiding principals to consider before building the tool rental application. Later, I have also included specific assumptions that I made in building the tool renting application.
 ---------------------------------------------------------------------------------
 
 Scalability: The application should be designed to handle a potentially large number of concurrent users. It should be scalable to accommodate increasing user traffic and rental requests without compromising performance.
