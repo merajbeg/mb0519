@@ -14,10 +14,20 @@
         <li><a href="#Not-in-scope">Not in scope</a></li>
       </ul>
       <ul>
-        <li><a href="#Assumptions">Assumptions</a></li>
+        <li><a href="#Assumptions">Assumptions</a>
+            <ul>
+                <li><a href="#Expected-Usage">Expected Usage</a></li>
+                <li><a href="#Scalability">Scalability</a></li>
+                <li><a href="#Database-Capacity">Database Capacity</a></li>
+                <li><a href="#High-Availability">High Availability</a></li>
+                <li><a href="#Disaster-Recovery">Disaster Recovery</a></li>
+                <li><a href="#Load-Testing">Load Testing</a></li>
+                <li><a href="#Security-and-Compliance">Security and Compliance</a></li>
+            </ul>        
+        </li>
       </ul>
       <ul>
-        <li><a href="#General-Principles-Guildelines">Architecture Principles & Guildelines</a></li>
+        <li><a href="#Architecture-Principles-&-Guildelines">Architecture Principles & Guildelines</a></li>
       </ul>            
       <ul>
         <li><a href="#built-with">Built With</a></li>
