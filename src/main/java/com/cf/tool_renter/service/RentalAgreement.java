@@ -1,10 +1,12 @@
-package com.cf.tool_renter;
+package com.cf.tool_renter.service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import com.cf.tool_renter.value_object.*;
+import java.io.Serializable;
 
-public class RentalAgreement {
+public class RentalAgreement implements Serializable {
     private final Tool tool;
     private final int rentalDays;
     private final LocalDate checkoutDate;

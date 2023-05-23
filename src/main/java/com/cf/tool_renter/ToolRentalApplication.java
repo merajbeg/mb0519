@@ -6,13 +6,20 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.time.format.DateTimeFormatter;
 
+import com.cf.tool_renter.service.RentalAgreement;
+import com.cf.tool_renter.value_object.Tool;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import lombok.*;
 
+@SpringBootApplication
+@ComponentScan (basePackages = "com.cf.tool_renter")
 public class ToolRentalApplication {
     private static final String TOOL_TYPES_FILE_PATH = "tool_types.json";
     private static final Logger LOGGER = Logger.getLogger(ToolRentalApplication.class.getName());
@@ -20,6 +27,7 @@ public class ToolRentalApplication {
 
 
     public static void main(String[] args) {
+        SpringApplication.run(ToolRentalApplication.class, args);
         try {
             LOGGER.info("Application Started!");
             Map<String, ToolType> toolTypes = readToolTypesFromFile(TOOL_TYPES_FILE_PATH);
@@ -42,26 +50,43 @@ public class ToolRentalApplication {
 
     private void run() {
         // Rent multiple tools
+        System.out.println();
+        System.out.println("################BELOW ARE THE TEST RESULTS################");
+        System.out.println("#####TEST1 RESULTs: Tool code JAKR, Checkout date 9/3/15, Rental days 5, Discount 101%");
         rentTool("JAKR", 5, LocalDate.of(2015, 9, 3), 101);
+        System.out.println();
+        System.out.println("#####TEST2 RESULTs: Tool code LADW, Checkout date 7/2/20, Rental days 3, Discount 10%");
         rentTool("LADW", 3, LocalDate.of(2020, 7, 2), 10);
+        System.out.println();
+        System.out.println("#####TEST3 RESULTs: Tool code 7/2/20, Checkout date 7/2/15, Rental days 5, Discount 25%");
         rentTool("CHNS", 5, LocalDate.of(2015, 7, 2), 25);
+        System.out.println();
+        System.out.println("#####TEST4 RESULTs: Tool code JAKD, Checkout date 9/3/15, Rental days 6, Discount 0%");
         rentTool("JAKR", 6, LocalDate.of(2015, 9, 3), 0);
+        System.out.println();
+        System.out.println("#####TEST5 RESULTs: Tool code JAKR, Checkout date 7/2/15, Rental days 9, Discount 0%");
         rentTool("JAKR", 9, LocalDate.of(2015, 7, 2), 0);
+        System.out.println();
+        System.out.println("#####TEST6 RESULTs: Tool code JAKR, Checkout date 7/2/20, Rental days 5, Discount 50%");
         rentTool("JAKR", 4, LocalDate.of(2020, 7, 2), 50);
+        System.out.println();
+        System.out.println("################TEST RESULTS ENDED################");
     }
 
-    private void rentTool(String toolCode, int rentalDays, LocalDate checkoutDate, double discountPercent) {
+    public RentalAgreement rentTool(String toolCode, int rentalDays, LocalDate checkoutDate, double discountPercent) {
         ToolType toolType = toolTypes.get(toolCode);
+        RentalAgreement rentalAgreement = null;
         if (toolType != null) {
             Tool tool = new Tool(toolCode, toolType.getType(), toolType.getBrand(), toolType.getDailyRentalCharge(),
             toolType.isWeekdayCharge(), toolType.isWeekendCharge(), toolType.isHolidayCharge());
 
-            RentalAgreement rentalAgreement = new RentalAgreement(tool, rentalDays, checkoutDate, discountPercent);
+            rentalAgreement = new RentalAgreement(tool, rentalDays, checkoutDate, discountPercent);
             rentalAgreement.printRentalAgreement();
             System.out.println(); // Add empty line between rental agreements
         } else {
             System.out.println("Tool type not found for tool code: " + toolCode);
         }
+        return rentalAgreement;
     }
 
     private static Map<String, ToolType> readToolTypesFromFile(String filePath) throws IOException {
@@ -70,6 +95,10 @@ public class ToolRentalApplication {
         return objectMapper.readValue(jsonContent, new TypeReference<HashMap<String, ToolType>>() {});
     }
 
+    /**
+     * Inner class with lombok support for getters
+     */
+    @Getter
     private static class ToolType {
         private String type;
         private String brand;
@@ -77,32 +106,5 @@ public class ToolRentalApplication {
         private boolean weekdayCharge;
         private boolean weekendCharge;
         private boolean holidayCharge;
-
-        // Getters and setters omitted for brevity
-
-        public String getType() {
-            return type;
-        }
-
-        public String getBrand() {
-            return brand;
-        }
-
-        public double getDailyRentalCharge() {
-            return dailyRentalCharge;
-        }
-
-        public boolean isWeekdayCharge() {
-            return weekdayCharge;
-        }
-
-        public boolean isWeekendCharge() {
-            return weekendCharge;
-        }
-
-        public boolean isHolidayCharge() {
-            return holidayCharge;
-        }
-
     }
 }

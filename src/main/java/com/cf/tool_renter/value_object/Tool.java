@@ -1,6 +1,8 @@
-package com.cf.tool_renter;
+package com.cf.tool_renter.value_object;
+import lombok.*;
 
-class Tool {
+@Getter
+public class Tool {
     private final String toolCode;
     private final String toolType;
     private final String brand;
@@ -20,34 +22,6 @@ class Tool {
         this.holidayCharge = holidayCharge;
     }
 
-    // Getters
-
-    public String getToolCode() {
-        return toolCode;
-    }
-
-    public String getToolType() {
-        return toolType;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public double getDailyRentalCharge() {
-        return dailyRentalCharge;
-    }
-
-    public boolean isWeekdayCharge() {
-        return weekdayCharge;
-    }
-
-    public boolean isWeekendCharge() {
-        return weekendCharge;
-    }
-
-    public boolean isHolidayCharge() {
-        return holidayCharge;
-    }
+   
 }
 
