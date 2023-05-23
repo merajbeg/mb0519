@@ -28,12 +28,16 @@ public class ToolRentalApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ToolRentalApplication.class, args);
+        //fetchToolRecrods();
+    }
+
+    private void fetchToolRecrods() {
         try {
             LOGGER.info("Application Started!");
             Map<String, ToolType> toolTypes = readToolTypesFromFile(TOOL_TYPES_FILE_PATH);
             LOGGER.info("Tool info json file successfully read");
             ToolRentalApplication application = new ToolRentalApplication(toolTypes);
-            application.run();
+            //application.run();
         } catch (IOException e) {
             //TODO: for Internaltionalization, better control and best practice, below messages should come from bundle/resource files instead of hardcoding here.
             LOGGER.info("Error reading tool types from file: " + e.getMessage());
@@ -42,13 +46,23 @@ public class ToolRentalApplication {
         }
     }
 
-    private final Map<String, ToolType> toolTypes;
+    static Map<String, ToolType> toolTypes;
+    static {
+        try {
+        toolTypes = readToolTypesFromFile(TOOL_TYPES_FILE_PATH);
+    } catch (IOException e) {
+        //TODO: for Internaltionalization, better control and best practice, below messages should come from bundle/resource files instead of hardcoding here.
+        LOGGER.info("Error reading tool types from file: " + e.getMessage());
+        System.out.println("Application is having a difficulty processing your request. Please reach out to the support with code: 123456, for further help");
+
+    }
+    }
 
     public ToolRentalApplication(Map<String, ToolType> toolTypes) {
         this.toolTypes = toolTypes;
     }
 
-    private void run() {
+    public String runTest() {
         // Rent multiple tools
         System.out.println();
         System.out.println("################BELOW ARE THE TEST RESULTS################");
@@ -71,9 +85,14 @@ public class ToolRentalApplication {
         rentTool("JAKR", 4, LocalDate.of(2020, 7, 2), 50);
         System.out.println();
         System.out.println("################TEST RESULTS ENDED################");
+        return "Test successful";
     }
 
     public RentalAgreement rentTool(String toolCode, int rentalDays, LocalDate checkoutDate, double discountPercent) {
+        if(toolTypes.size() <= 0)
+            fetchToolRecrods();
+
+        System.out.println("tool code=" + toolCode);
         ToolType toolType = toolTypes.get(toolCode);
         RentalAgreement rentalAgreement = null;
         if (toolType != null) {

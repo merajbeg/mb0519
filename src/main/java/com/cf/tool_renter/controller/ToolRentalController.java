@@ -24,6 +24,7 @@ public class ToolRentalController {
     @PostMapping("/rent")
     public ResponseEntity<RentalAgreement> rentTool(@RequestBody RentalRequest rentalRequest) {
         try {
+            System.out.println(rentalRequest.getCheckoutDate() + rentalRequest.getToolCode());
             RentalAgreement rentalAgreement = toolRentalService.rentTool(
                     rentalRequest.getToolCode(),
                     rentalRequest.getRentalDays(),
@@ -35,6 +36,18 @@ public class ToolRentalController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
+
+    @PostMapping("/runTest")
+    public ResponseEntity<String> runTest() {
+        try {
+            System.out.println("inside runTest");
+            String returnResult = toolRentalService.runTest();
+            return ResponseEntity.ok(returnResult);
+        } catch (ToolRentalException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
 }
 
 

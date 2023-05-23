@@ -34,5 +34,15 @@ public class ToolRentalService {
             throw new ToolRentalException("Error renting the tool.", e);
         }
     }
+
+    public String runTest()
+            throws ToolRentalException {
+        // Rent the tool
+        try {
+            return toolRentalApplication.runTest();
+        } catch (Exception e) {
+            throw new ToolRentalException("Error running tests.", e);
+        }
+    }    
 }
 
