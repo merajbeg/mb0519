@@ -3,7 +3,7 @@
 <a name="readme-top"></a>
 # Tool Renting Application
 
-
+<br/><br/>
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
