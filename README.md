@@ -11,23 +11,23 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#Not-in-scope">Not in scope</a></li>
+        <li><a href="#not-in-scope">Not in scope</a></li>
       </ul>
       <ul>
-        <li><a href="#Assumptions">Assumptions</a>
+        <li><a href="#assumptions">Assumptions</a>
             <ul>
-                <li><a href="#Expected-Usage">Expected Usage</a></li>
-                <li><a href="#Scalability">Scalability</a></li>
-                <li><a href="#Database-Capacity">Database Capacity</a></li>
-                <li><a href="#High-Availability">High Availability</a></li>
-                <li><a href="#Disaster-Recovery">Disaster Recovery</a></li>
-                <li><a href="#Load-Testing">Load Testing</a></li>
-                <li><a href="#Security-and-Compliance">Security and Compliance</a></li>
+                <li><a href="#expected-usage">Expected Usage</a></li>
+                <li><a href="#scalability">Scalability</a></li>
+                <li><a href="#database-capacity">Database Capacity</a></li>
+                <li><a href="#high-availability">High Availability</a></li>
+                <li><a href="#disaster-recovery">Disaster Recovery</a></li>
+                <li><a href="#load-testing">Load Testing</a></li>
+                <li><a href="#security-and-compliance">Security and Compliance</a></li>
             </ul>        
         </li>
       </ul>
       <ul>
-        <li><a href="#Architecture-Principles-&-Guildelines">Architecture Principles & Guildelines</a></li>
+        <li><a href="#architecture-principles-&-guildelines">Architecture Principles & Guildelines</a></li>
       </ul>            
       <ul>
         <li><a href="#built-with">Built With</a></li>
@@ -72,9 +72,14 @@ All 6 test cases can be run in 3 different ways: <br/>
 
 </p>
 <br/><br/>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <hr/>
 
-# Not in scope:
+
+<!-- USAGE EXAMPLES -->
+## Not in scope:
+
 <p>
     <ol>
         <ul>
@@ -92,9 +97,13 @@ All 6 test cases can be run in 3 different ways: <br/>
     </ol>
 </p>
 <br/>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <hr/>
 
-# Assumptions (as as a Software Architect):
+# Assumptions:
+
+As an Software Architect:
 
 ## Expected Usage: 
 I estimated that the application would receive an average of 5000 rental requests per day, resulting in approximately 150,000 requests per month.
@@ -130,6 +139,8 @@ Deploying the application in docker containers over kubernetes (K8s) should furt
 These  assumptions helped me guide the architectural decisions, infrastructure planning, and in development process of the tool rental application, ensuring it was designed to meet the anticipated usage patterns and performance requirements.
 </p>
 <br/><br/>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <hr/>
 
 
@@ -191,6 +202,8 @@ The RPO represents the acceptable data loss in case of a disaster or outage. It 
 These guiding principals provide a foundation for designing and developing the tool rental application while considering its potential usage, scalability, resiliency, and other important factors. Based on the answers, correct deisgn patterns like CQRS, Event Driven, Eventual consistency vds. real time, event sourcing etc. can be put in place to meet the expectstions. Read heavy vs. write heavy applications and many other factors help us decide in picking either a SQL or NoSQL databases, and document vs. graph vs. column databases. It is essential to analyze the specific requirements and consult with stakeholders to make informed decisions and build a robust application.
 </p>
 <br/>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <hr/>
 
 
