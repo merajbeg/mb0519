@@ -1,32 +1,29 @@
-# Pull Request
+## Pull Request Description
 
-## Description
+<!-- Provide a brief description of the changes introduced by this Pull Request -->
 
-<!-- Provide a brief description of the changes introduced by this pull request. -->
+## Related Issue
 
-## Related Issue(s)
-
-<!-- If this pull request addresses any specific issue(s), reference them here using the GitHub issue linking syntax (`#issue_number`). -->
+<!-- If this Pull Request is related to an existing issue, provide the issue number and a brief description -->
 
 ## Proposed Changes
 
-<!-- Provide a detailed explanation of the changes made in this pull request. -->
+<!-- List the specific changes made in this Pull Request -->
 
 ## Checklist
 
-- [ ] The code changes follow the project's code style and guidelines.
-- [ ] Unit tests have been added or updated to cover the changes.
-- [ ] Documentation has been updated to reflect the changes if applicable.
-- [ ] The code has been tested locally and is functioning as expected.
-- [ ] All existing tests are passing.
-- [ ] There are no linting or formatting errors.
-- [ ] The commit messages are clear and descriptive.
+- [ ] I have tested the changes locally and they work as intended
+- [ ] I have added necessary documentation or updated existing documentation
+- [ ] I have followed the coding style and conventions of this project
+- [ ] I have added appropriate unit tests (if applicable)
+- [ ] I have rebased my branch on the latest main branch (or the target branch for this Pull Request)
+- [ ] I have resolved any merge conflicts
 
-## Screenshots (if applicable)
+## Screenshots
 
-<!-- If your changes include any UI or visual modifications, provide relevant screenshots to demonstrate the changes. -->
+<!-- If applicable, add screenshots or GIFs to showcase the changes visually -->
 
 ## Additional Notes
 
-<!-- Add any additional notes or context that may be relevant to the reviewers. -->
+<!-- Add any additional notes or context about the Pull Request -->
 
