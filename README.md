@@ -1,135 +1,131 @@
 # mb0519
 
 <a name="readme-top"></a>
-# Tool Renting Application
-
-<br/><br/>
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary><mark><font color=darkred>Table of Contents</font></mark></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#not-in-scope">Not in scope</a></li>
-      </ul>
-      <ul>
-        <li><a href="#assumptions">Assumptions</a>
-            <ul>
-                <li><a href="#expected-usage">Expected Usage</a></li>
-                <li><a href="#scalability">Scalability</a></li>
-                <li><a href="#database-capacity">Database Capacity</a></li>
-                <li><a href="#high-availability">High Availability</a></li>
-                <li><a href="#disaster-recovery">Disaster Recovery</a></li>
-                <li><a href="#load-testing">Load Testing</a></li>
-                <li><a href="#security-and-compliance">Security and Compliance</a></li>
-            </ul>        
-        </li>
-      </ul>
-      <ul>
-        <li><a href="#architecture-principles-&-guildelines">Architecture Principles & Guildelines</a></li>
-      </ul>            
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 <br/>
 
-<hr/>
+# Tool Renting Application
+
+<br/>
+<!-- TABLE OF CONTENTS -->
+  <summary>Table of Contents</summary>
+<p>
+
+* [About The Project](#about-the-project)
+* [Not in scope](#not-in-scope)
+* [Assumptions](#assumptions)
+* [Expected Usage](#expected-usage)
+* [Scalability](#scalability)
+* [Database Capacity](#database-capacity)
+* [High Availability](#high-availability)
+* [Disaster Recovery](#disaster-recovery)
+* [Load Testing](#load-testing)
+
+* [Security and Compliance](#security-and-compliance)
+* [Architecture Principles & Guildelines](#architecture-principles--guildelines)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+
+</p>
 
 # About The Project:
+
 <p>
 It is given that the tool rental application will be used by customers to rent tools from a store. The customers will interact with the application to check tool availability, make rental requests, and receive rental agreements.</p>
 
 <p>
-The current implementation is a working code that can be tested and deployed preferrably as a docker container over kubernetes. Dockerfile is included. API versioning is implemented as well.
-All 6 test cases can be run in 3 different ways: <br/>
+The current implementation is a working code that can be tested and deployed preferrably as a docker container over kubernetes. Dockerfile is included. API versioning is implemented as well. Included Postman collection can be used to 
 <ol>
     <ul>
-    <li>By running TooRenterApplicationTests test class e.g. mvn test</li>
+      <li>Run Application Health Check</li>
+    </ul>   
+    <ul>
+      <li>Rent a Tool</li>
     </ul>
     <ul>
-    <li>By making an API call to runTest endppoint. http://localhost:8080/v1/api/tools/runTest</li>
+      <li>Run all Tests</li>
     </ul>
     <ul>
-    <li>Least preferred way and not recommended: At the startup of the application, all 6 requested tests will run, if desired, and print the renter agreements on console per the requirements</li>
-    </ul>
+      <li>All Tests can also be run via provided TooRenterApplicationTests class and using the command </li>
+
+   ```sh
+   mvn test 
+   ```         
+ 
 </ol>
 
 </p>
 <br/><br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<hr/>
-
-
 <!-- USAGE EXAMPLES -->
-## Not in scope:
-
+# Not in scope:
 <p>
     <ol>
         <ul>
         <li>User/customer management Module and Storage, Purchase history Module, Payment Module, Auditing Module, Caching solution, Product Search Module.</li>
         </ul>
         <ul>
-        <li>Database usage: Tool information is stored in a Json file storage instead of a database, later to be refactored to use a relational/NoSQL database.</li>
+          <li>Database usage: Tool information is stored in a Json file storage instead of a database using a SpringBoot Repository pattern where it is read and made available for subsequent API calls. Later, the code should be refactored to use a relational/NoSQL database.</li>
         </ul>
         <ul>
-        <li>Data Encryption in transit and at rest: TLS or json file encyption was not built. </li>
+          <li>Data Encryption in transit and at rest: TLS or json file encyption was not built. </li>
         </ul>        
         <ul>
-        <li>Authentication & Authorization: Since authentication (AuthN) and authorization (AuthZ) was not explictly called for in teh requirement document, even though I understand in a real world application it is a must, I have skipped implementing this feature. If desired, I would have implemented OAuth 2.0 based AuthN/AuthZ using Spring Security, and may have integrated with a 3rd party AuthN provider like Auth0 or AWS Cognito.</li>
+          <li>Authentication & Authorization: Since authentication (AuthN) and authorization (AuthZ) was not explictly called for in teh requirement document, even though I understand in a real world application it is a must, I have skipped implementing this feature. If desired, I would have implemented OAuth 2.0 based AuthN/AuthZ using Spring Security, and may have integrated with a 3rd party AuthN provider like Auth0 or AWS Cognito.</li>
         </ul>
+        <ul>
+          <li>Service Discovery is not implemented as it will be managed via k8s services</li>
+        </ul>          
+        <ul>
+          <li>Caching: Google Guava or other caching implementation is not included</li>
+        </ul>
+        <ul>
+          <li>Id: should be included to create a Tool Entity</li>
+        </ul> 
+        <ul>
+          <li>Tracing, and Matric using opentelemetry and Micrometer</li>
+        </ul>        
     </ol>
 </p>
 <br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<hr/>
-
 # Assumptions:
 
 As an Software Architect:
 
-## Expected Usage: 
+### Expected Usage: 
 I estimated that the application would receive an average of 5000 rental requests per day, resulting in approximately 150,000 requests per month.
 <br/>
 
-## Scalability: 
+### Scalability: 
 The application was designed to handle a surge in traffic during peak hours, with the assumption that the concurrent user load could reach up to 200 users per minute.
 <br/>
 
-## Database Capacity: 
+### Database Capacity: 
 Based on the expected usage, I estimated that most relational and NoSQL databases should be able to handle up to 150,000 rental agreements per month, with appropriate indexes and query optimization to ensure efficient data retrieval and updates. However, I used json file based storage in my proof of concept implementation to cut down on extra dependencies, keep it simple at POC level, and time limitation. 
 <br/>
 
-## High Availability: 
+### High Availability: 
 The application was designed with high availability in mind, aiming for an uptime of at least 99.9%. This required redundant infrastructure, load balancing, and failover mechanisms to minimize downtime and ensure uninterrupted service.
 <br/>
 
-## Disaster Recovery: 
+### Disaster Recovery: 
 I assumed a recovery time objective (RTO) of 4 hours, meaning that the application should be restored and operational within 4 hours in the event of a disaster. The recovery point objective (RPO) was set at 1 hour, indicating that the maximum acceptable data loss would be 1 hour worth of rental data.
 <br/>
 
-## Load Testing: 
+### Load Testing: 
 We shall load test to validate the application's performance and scalability. The application should be tested under simulated peak load conditions, ensuring that it could handle the expected number of concurrent users and rental requests without performance degradation.
 <br/>
 
-## Security and Compliance: 
+### Security and Compliance: 
 I wish to incorporate industry-standard security practices and compliance measures to protect customer data, including secure storage, encryption, and adherence to relevant regulations such as CCPA ( California Consumer Privacy Act) and GDPR (General Data Protection Regulation), if renting globally.
 <br/>
 <br/>
@@ -141,60 +137,57 @@ These  assumptions helped me guide the architectural decisions, infrastructure p
 <br/><br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<hr/>
-
-
 # Architecture Principles & Guildelines:
 <p>
 Here are guiding principals to consider before building any application including, the tool rental application.
 </p>
 <br/>
 
-## Scalability: 
+### Scalability: 
 The application should be designed to handle a potentially large number of concurrent users. It should be scalable to accommodate increasing user traffic and rental requests without compromising performance.
 <br/>
 
-## Resiliency: 
+### Resiliency: 
 The application should be resilient and able to recover from failures or unexpected events. It should handle errors gracefully and provide appropriate error messages to users. Implementing retry mechanisms, caching, and load balancing can contribute to the resiliency of the application.
 <br/>
 
-## Peak and Off-Peak Traffic: 
+### Peak and Off-Peak Traffic: 
 The application should be designed to handle both peak and off-peak traffic. During peak hours, there might be a higher influx of rental requests, requiring the application to efficiently manage the load and prioritize requests.
 <br/>
 
-## Calls per Hour, Day, and Month: 
+### Calls per Hour, Day, and Month: 
 It is important to estimate the potential number of API calls the application might receive per hour, day, and month. This will help determine the necessary infrastructure requirements, such as server capacity, network bandwidth, and database capacity, to handle the expected load.
 <br/>
 
-## Authentication and Authorization: 
+### Authentication and Authorization: 
 The application should enforce authentication and authorization mechanisms to ensure that only authenticated users can access the rental functionality. Implementing OAuth 2.0 can provide secure authentication and authorization capabilities.
 <br/>
 
-## Security: 
+### Security: 
 The application should prioritize security measures to protect user data and prevent unauthorized access. This includes secure communication over HTTPS, proper input validation, and protection against common security vulnerabilities, such as SQL injection and cross-site scripting (XSS).
 <br/>
 
-## Data Persistence: 
+### Data Persistence: 
 The application should store and retrieve tool rental data reliably. A robust database system should be chosen to handle data storage efficiently, with proper indexing and optimization to support frequent data retrieval and updates.
 <br/>
 
-## Logging and Monitoring: 
+### Logging and Monitoring: 
 Implement comprehensive logging and monitoring mechanisms to capture application activities, track errors, and monitor performance. This helps in troubleshooting issues, analyzing usage patterns, and optimizing the application.
 <br/>
 
-## Service Level Agreement (SLA): 
+### Service Level Agreement (SLA): 
 Define the desired service level agreement for the application, including response time, uptime, and data consistency requirements. This will guide the development process and help set appropriate benchmarks for performance and reliability.
 <br/>
 
-## Disaster Recovery:
+### Disaster Recovery:
 
 The application should have a well-defined disaster recovery plan in place to ensure business continuity in the event of a disaster or major outage. This includes having redundant systems, backup data, and a strategy to quickly recover and restore the application to a functional state.
 
-### RTO (Recovery Time Objective):
+#### RTO (Recovery Time Objective):
 
 The RTO defines the acceptable downtime for the application in the event of a disaster or outage. It represents the maximum time allowed for the application to be offline before recovery is completed. The RTO should be determined based on business requirements and the impact of downtime on operations and customers.
 
-### RPO (Recovery Point Objective):
+#### RPO (Recovery Point Objective):
 
 The RPO represents the acceptable data loss in case of a disaster or outage. It defines the maximum amount of data that can be lost during the recovery process. The RPO should be determined based on data criticality, frequency of data updates, and business requirements.
 <br/>
@@ -204,28 +197,27 @@ These guiding principals provide a foundation for designing and developing the t
 <br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<hr/>
-
-
 # Built With:
 This section lists any major frameworks/libraries used to bootstrap the project.
 
 * [Spring Boot]
 * [Maven]
 * [Spring Initializr] [https://start.spring.io/]
+* Lombok
+* Actuator for health endpoints [http://localhost:8080/actuator/health]
+* 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br/>
-<hr/>
 
 <!-- GETTING STARTED -->
-## Getting Started
+# Getting Started
 
 instructions to set up your project locally.
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+## Prerequisites
 
 * Java 1.8+ is installed
 * Maven is intalled
@@ -234,7 +226,7 @@ To get a local copy up and running follow these simple steps.
 
 Please follow the standard procedures to install above main dependencies before proceeding further.
 
-### Installation
+## Installation
 <p>
 Below is an example of how you can install, set up and your app as a Springboot Application.
 
@@ -271,7 +263,6 @@ Below is an example of how you can install, set up and your app as a docker cont
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -301,7 +292,7 @@ curl --location 'http://localhost:8080/v1/api/tools/rent' \
 
 
 <!-- ROADMAP -->
-## Roadmap
+# Roadmap
 
 - [ ] Add Authentication
 - [ ] Add Database
@@ -315,7 +306,7 @@ curl --location 'http://localhost:8080/v1/api/tools/rent' \
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+# Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -333,7 +324,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## License
+# License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
@@ -342,9 +333,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
-## Contact
+# Contact
 
-Meraj Beg - hmmtmm2@gmail.com
+Meraj Beg
 
 Project Link: [https://github.com/merajbeg/mb0519](https://github.com/merajbeg/mb0519)
 

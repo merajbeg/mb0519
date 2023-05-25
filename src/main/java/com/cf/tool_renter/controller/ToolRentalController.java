@@ -9,13 +9,15 @@ import com.cf.tool_renter.exception.ToolRentalException;
 import com.cf.tool_renter.service.RentalAgreement;
 import com.cf.tool_renter.service.ToolRentalService;
 import com.cf.tool_renter.value_object.RentalRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("v1/api/tools")
 public class ToolRentalController {
 
     private final ToolRentalService toolRentalService;
-
+    private static final Logger logger = LoggerFactory.getLogger(ToolRentalController.class);
     @Autowired
     public ToolRentalController(ToolRentalService toolRentalService) {
         this.toolRentalService = toolRentalService;
@@ -24,13 +26,14 @@ public class ToolRentalController {
     @PostMapping("/rent")
     public ResponseEntity<RentalAgreement> rentTool(@RequestBody RentalRequest rentalRequest) {
         try {
-            System.out.println(rentalRequest.getCheckoutDate() + rentalRequest.getToolCode());
+            logger.info("####inside /rent endpoint");
             RentalAgreement rentalAgreement = toolRentalService.rentTool(
                     rentalRequest.getToolCode(),
                     rentalRequest.getRentalDays(),
                     rentalRequest.getCheckoutDate(),
                     rentalRequest.getDiscountPercent()
             );
+            logger.info(rentalAgreement.getFinalCharge()+"");
             return ResponseEntity.ok(rentalAgreement);
         } catch (ToolRentalException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -40,7 +43,7 @@ public class ToolRentalController {
     @PostMapping("/runTest")
     public ResponseEntity<String> runTest() {
         try {
-            System.out.println("inside runTest");
+            logger.info("####inside /runTest endpoint");
             String returnResult = toolRentalService.runTest();
             return ResponseEntity.ok(returnResult);
         } catch (ToolRentalException e) {
