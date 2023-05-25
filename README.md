@@ -26,6 +26,7 @@
 * [Getting Started](#getting-started)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+* [Architecture Diagram](#architecture-diagram)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -341,3 +342,8 @@ Project Link: [https://github.com/merajbeg/mb0519](https://github.com/merajbeg/m
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+# Architecture Diagram
+<p>
+<img src="Tool Rental App Architecture Diagram.png" />
+</p>
